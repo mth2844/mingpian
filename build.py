@@ -99,6 +99,16 @@ def main():
             "src": src_path.replace("\\", "/"),
         })
 
+    # 清理已删除图片留下的孤儿缩略图
+    generated = {os.path.basename(im["thumb"]) for im in images}
+    for t in os.listdir(THUMBS_DIR):
+        if t not in generated and not t.startswith('.'):
+            try:
+                os.remove(os.path.join(THUMBS_DIR, t))
+                print(f"清理孤儿缩略图: {t}")
+            except OSError:
+                pass
+
     data = {"watermark": WATERMARK_TEXT, "images": images}
     with open(MANIFEST, "w", encoding="utf-8") as fp:
         json.dump(data, fp, ensure_ascii=False, indent=2)
