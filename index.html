@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的壁纸图库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <h1>壁纸图库</h1>
+    <p id="count">加载中…</p>
+  </div>
+</header>
+
+<main id="gallery" class="gallery"></main>
+<p id="empty" class="empty" hidden>还没有壁纸，把图片放进 images/ 文件夹后运行 build.py 生成。</p>
+
+<!-- 灯箱预览 -->
+<div id="lightbox" class="lightbox" hidden>
+  <div class="lb-bg"></div>
+  <button class="lb-close" aria-label="关闭">×</button>
+  <button class="lb-prev" aria-label="上一张">‹</button>
+  <button class="lb-next" aria-label="下一张">›</button>
+  <figure class="lb-figure">
+    <div class="lb-img-wrap">
+      <img id="lb-img" alt="壁纸预览" draggable="false">
+      <div class="wm-overlay"></div>
+    </div>
+    <figcaption id="lb-caption"></figcaption>
+  </figure>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
